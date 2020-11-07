@@ -13,3 +13,23 @@ fun sum(count:Int):Int{
     }
     return sum
 }
+// 함수명, 매개변수(obj) : 매개변수 타입(Any), 리턴값(Int)
+fun getLength(obj: Any):Int{
+    if(obj is String){
+        return obj.length
+    }
+    return 0
+
+    // ==> 인자값이 String 일 때, 길이 반환 그렇지 않다면 return 0
+}
+
+// 이게 되네..
+fun cases(obj:Any):String{
+    when(obj){
+        1->return "One"
+        "hello"-> return "Greeting"
+        is Long -> return "Long"
+        !is String -> return "Not a String"
+        else -> return "unknown"
+    }
+}
