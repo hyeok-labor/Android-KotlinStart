@@ -5,7 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_my_kotlin.*
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_my_kotlin.testBtn
 import some_package.PackageTest     // 가상의 패키지에 생성되었지만 호출이 가능함
 
 
@@ -87,11 +88,25 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         Toast.makeText(this,"button click..", Toast.LENGTH_LONG).show()
 
         // view에서 가져온 값이 testBtn과 일치할 때 가상패키지로부터 import한 메서드 실행
+        // 코틀린에서는 layout의 id값을 그대로 가져와서 변수로 활용할 수 있다 개굿
         if(v==testBtn){
-            val test = PackageTest()
-            Log.d("hyeok",test.getNow());
+            val test = PackageTest()    // 변수가 함수를 그냥 먹었다. val 은 상수 선언임
+            Log.d("hyeok",test.getNow())
+            var str = "hello hyeok"
+            val result = getStringLength(str)
+            // int형의 result를 .toString으로 형변환 해줘야 토스트 가능. 토스트는 String형만 띄우나보네
+            Log.d("hyeok", result.toString())
+
+
+
         }
     }
 
+    fun getStringLength(obj:Any):Int?{
+        if(obj is String){
+            return obj.length
+        }
+        return null
+    }
 
 }
